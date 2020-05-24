@@ -8,15 +8,14 @@ import javax.persistence.Persistence;
 import ec.edu.ups.dao.GenericDAO;
 
 public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
-	private Class<T> persistentClass;
+	private final Class<T> persistentClass;
 	protected EntityManager entityManager;
 	
 	public JPAGenericDAO(Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
 		this.entityManager = Persistence.createEntityManagerFactory("jpa").createEntityManager();
 	}
-	
-	
+
 	@Override
 	public boolean create(T entidad) {
 		entityManager.getTransaction().begin();
@@ -38,6 +37,23 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 	public T read(ID id) {
 		return entityManager.find(persistentClass, id);
 	}
+
+	@SuppressWarnings({"rawtypes", "unchecked"})
+	@Override
+	public List<T> readAll() {
+		entityManager.getTransaction().begin();
+		List<T> list = null;
+		try{
+			javax.persistence.criteria.CriteriaQuery criteriaQuery = entityManager.getCriteriaBuilder().createQuery();
+			criteriaQuery.select(criteriaQuery.from(persistentClass));
+			list = entityManager.createQuery(criteriaQuery).getResultList();
+			entityManager.getTransaction().commit();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 
 	@Override
 	public boolean update(T entity) {

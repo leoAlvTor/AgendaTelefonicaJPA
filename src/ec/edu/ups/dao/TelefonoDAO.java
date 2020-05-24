@@ -1,13 +1,13 @@
 package ec.edu.ups.dao;
 
-import java.util.Set;
+import java.util.List;
 
 import ec.edu.ups.modelo.Telefono;
 
 public interface TelefonoDAO extends GenericDAO<Telefono, Integer>{
 
-	public abstract Telefono findByNumberAndID(String number, String ID);
+	Telefono findByNumberAndID(String number, String ID);
 	
-	public abstract Set<Telefono> findByID(String ID);
+	List<Telefono> findByID(String ID);
 	
 }

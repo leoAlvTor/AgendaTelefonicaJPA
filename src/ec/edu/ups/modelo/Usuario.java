@@ -33,7 +33,7 @@ public class Usuario implements Serializable{
 	public Usuario(String cedula, String nombre, String apellido, String contrasena, String correo,
 			Set<Telefono> telefonos) {
 		super();
-		telefonos = new HashSet<Telefono>();
+		telefonos = new HashSet<>();
 		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellido = apellido;

@@ -1,9 +1,17 @@
 package ec.edu.ups.jpa;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import ec.edu.ups.dao.TelefonoDAO;
 import ec.edu.ups.modelo.Telefono;
+import ec.edu.ups.modelo.Usuario;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 public class JPATelefonoDAO extends JPAGenericDAO<Telefono, Integer> implements TelefonoDAO{
 
@@ -13,14 +21,33 @@ public class JPATelefonoDAO extends JPAGenericDAO<Telefono, Integer> implements 
 
 	@Override
 	public Telefono findByNumberAndID(String number, String ID) {
-		// TODO Auto-generated method stub
-		return null;
+		Usuario usuario = JPADAOFactory.getFactory().getUsuarioDAO().read(ID);
+
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Telefono> criteriaQuery = criteriaBuilder.createQuery(Telefono.class);
+		Root<Telefono> telefonoRoot = criteriaQuery.from(Telefono.class);
+		List<Predicate> predicateList = new ArrayList<>();
+		predicateList.add(criteriaBuilder.equal(telefonoRoot.get("numero"), number));
+		predicateList.add(criteriaBuilder.equal(telefonoRoot.get("usuario"), usuario));
+
+		criteriaQuery.select(telefonoRoot).where(predicateList.toArray(new Predicate[]{}));
+
+		return entityManager.createQuery(criteriaQuery).getSingleResult();
 	}
 
 	@Override
-	public Set<Telefono> findByID(String ID) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Telefono> findByID(String ID) {
+		Usuario usuario = JPADAOFactory.getFactory().getUsuarioDAO().read(ID);
+
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Telefono> criteriaQuery = criteriaBuilder.createQuery(Telefono.class);
+		Root<Telefono> telefonoRoot = criteriaQuery.from(Telefono.class);
+
+		Predicate predicate = criteriaBuilder.equal(telefonoRoot.get("usuario"), usuario);
+
+		criteriaQuery.select(telefonoRoot).where(predicate);
+
+		return entityManager.createQuery(criteriaQuery).getResultList();
 	}
 
 	

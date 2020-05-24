@@ -4,8 +4,8 @@ import ec.edu.ups.modelo.Usuario;
 
 public interface UsuarioDAO extends GenericDAO<Usuario, String>{
 	
-	public abstract boolean verifyUser(String user, String password);
+	boolean verifyUser(String user, String password);
 	
-	public abstract String getID(String mail);
+	String getID(String mail);
 	
 }
