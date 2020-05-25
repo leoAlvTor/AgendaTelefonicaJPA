@@ -9,16 +9,16 @@
 	<title>Telephoniq</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 900|Vollkorn:400i" rel="stylesheet">
-	<link rel="stylesheet" href="/AgendaTelefonica_Web_exploded/private/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/AgendaTelefonica_Web_exploded/private/css/jquery-ui.css">
-	<link rel="stylesheet" href="/AgendaTelefonica_Web_exploded/private/css/jquery.fancybox.min.css">
-	<link rel="stylesheet" href="/AgendaTelefonica_Web_exploded/private/css/aos.css">
-	<link rel="stylesheet" href="/AgendaTelefonica_Web_exploded/private/css/style.css">
+	<link rel="stylesheet" href="/private/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/private/css/jquery-ui.css">
+	<link rel="stylesheet" href="/private/css/jquery.fancybox.min.css">
+	<link rel="stylesheet" href="/private/css/aos.css">
+	<link rel="stylesheet" href="/private/css/style.css">
 </head>
 
 <body id="home-section" style="background-image: url('https://wallpaperaccess.com/full/7285.jpg');">
 
-<form style="display: none;" id="form_cbr" action="/AgendaTelefonica_Web_exploded/ServletCabacera" method="POST">
+<form style="display: none;" id="form_cbr" action="/ServletCabacera" method="POST">
 	<input id="bsc_numero" name="bsc_numero" type="text" style="display: none" value="" />
 	<button id="btn_listar" name="btn" value="listar_numeros" type="submit" class="btn btn-secondary" style="display: none">Listar Mis Números</button>
 </form>
@@ -114,7 +114,7 @@
 								<a class="nav-link" onclick="listar()">Listar Mis Telefonos</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="/AgendaTelefonica_Web_exploded/ServletIMG?salir=true">Cerrar Sesion</a>
+								<a class="nav-link" href="/ServletIMG?salir=true">Cerrar Sesion</a>
 							</li>
 						</ul>
 					</div>
@@ -139,7 +139,7 @@
 		<div class="container">
 
 			<div class="form-submit">
-				<form id="form_cabecera" action="/AgendaTelefonica_Web_exploded/ServletBusquedas" method="post">
+				<form id="form_cabecera" action="/ServletBusquedas" method="post">
 					<h5 style="color: white" , class="bg-black"><strong>Listar Telefonos Por Cedula:</strong></h5>
 					<div class="input-group input-group-lg">
 						<input type="text" class="form-control" id="cedula" name="cedula" placeholder="Numero de cedula">
@@ -151,7 +151,7 @@
 			</div>
 			<br>
 			<div class="form-submit">
-				<form action="/AgendaTelefonica_Web_exploded/ServletBusquedas" method="post">
+				<form action="/ServletBusquedas" method="post">
 					<h5 style="color: white" , class="bg-black"><strong>Listar Telefonos Por Correo Electronico:</strong></h5>
 					<div class="input-group input-group-lg">
 						<input type="text" class="form-control" placeholder="Correo Eletronico" name="correo">
@@ -225,7 +225,7 @@
 			<br>
 
 			<div class="form-submit">
-				<form action="/AgendaTelefonica_Web_exploded/ServletCrtUpt" method="post">
+				<form action="/ServletCrtUpt" method="post">
 					<h5><strong>Datos Telefonicos:</strong></h5><br>
 					<label class="label">
 						<h5>Mi Correo</h5>
@@ -273,7 +273,7 @@
 			<br>
 
 			<div class="form-submit" id="delete_form">
-				<form action="/AgendaTelefonica_Web_exploded/ServletDelete" method="post">
+				<form action="/ServletDelete" method="post">
 					<h5><strong>Eliminar Registro Telefonico:</strong></h5><br>
 					<label class="label">
 						<h5>Numero Telefonico</h5>
@@ -303,13 +303,13 @@
 		</div>
 	</footer>
 </div>
-<script src="/AgendaTelefonica_Web_exploded/private/js/jquery-3.3.1.min.js"></script>
-<script src="/AgendaTelefonica_Web_exploded/private/js/jquery-ui.js"></script>
-<script src="/AgendaTelefonica_Web_exploded/private/js/bootstrap.min.js"></script>
-<script src="/AgendaTelefonica_Web_exploded/private/js/aos.js"></script>
+<script src="/private/js/jquery-3.3.1.min.js"></script>
+<script src="/private/js/jquery-ui.js"></script>
+<script src="/private/js/bootstrap.min.js"></script>
+<script src="/private/js/aos.js"></script>
 
 
-<script src="/AgendaTelefonica_Web_exploded/private/js/main.js"></script>
+<script src="/private/js/main.js"></script>
 
 
 </body>

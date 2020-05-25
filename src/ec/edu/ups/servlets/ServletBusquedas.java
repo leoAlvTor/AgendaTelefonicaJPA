@@ -1,8 +1,6 @@
 package ec.edu.ups.servlets;
 
-import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.TelefonoDAO;
-import ec.edu.ups.dao.UsuarioDAO;
 import ec.edu.ups.jpa.JPADAOFactory;
 import ec.edu.ups.modelo.Telefono;
 

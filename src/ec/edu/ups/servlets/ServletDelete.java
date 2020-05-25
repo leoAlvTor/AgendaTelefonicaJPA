@@ -1,12 +1,8 @@
 package ec.edu.ups.servlets;
 
-import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.TelefonoDAO;
-import ec.edu.ups.dao.UsuarioDAO;
 import ec.edu.ups.jpa.JPADAOFactory;
 import ec.edu.ups.modelo.Error;
-import ec.edu.ups.modelo.Telefono;
-import ec.edu.ups.modelo.Usuario;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -58,7 +58,7 @@ body {
   background: #f8f8f8;
   font-weight: 400;
   font-family: Poppins;
-  background-image: url("/AgendaTelefonica_Web_exploded/public/Images/background.png");
+  background-image: url("/public/Images/background.png");
 }
 
 .container {

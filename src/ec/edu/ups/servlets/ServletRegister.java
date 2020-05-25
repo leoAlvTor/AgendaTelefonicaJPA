@@ -1,7 +1,7 @@
 package ec.edu.ups.servlets;
 
-import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.UsuarioDAO;
+import ec.edu.ups.jpa.JPADAOFactory;
 import ec.edu.ups.modelo.Error;
 import ec.edu.ups.modelo.Usuario;
 
@@ -71,7 +71,7 @@ public class ServletRegister extends HttpServlet {
 		}
 		if(!flag) {
 			Usuario usuario = new Usuario(cedula, nombre, apellido, password, correo, null);
-			UsuarioDAO usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
+			UsuarioDAO usuarioDAO = JPADAOFactory.getFactory().getUsuarioDAO();
 			if(usuarioDAO.create(usuario)) {
 				response.sendRedirect(request.getContextPath()+"/public/Index.html");
 			}else {

@@ -13,7 +13,7 @@ public class Min {
 
 	public static void main(String[] args) {
 		TelefonoDAO telefonoDAO = JPADAOFactory.getFactory().getTelefonoDAO();
-
+		telefonoDAO.findByID(JPADAOFactory.getFactory().getUsuarioDAO().getID("correo@correo.com"));
 		System.out.println();
 	}
 

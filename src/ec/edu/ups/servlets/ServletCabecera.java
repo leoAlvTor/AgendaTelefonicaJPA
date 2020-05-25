@@ -1,6 +1,5 @@
 package ec.edu.ups.servlets;
 
-import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.TelefonoDAO;
 import ec.edu.ups.dao.UsuarioDAO;
 import ec.edu.ups.jpa.JPADAOFactory;
@@ -61,7 +60,8 @@ public class ServletCabecera extends HttpServlet {
 		String correo = String.valueOf(request.getSession(false).getAttribute("usuario"));
 		UsuarioDAO usuDao = JPADAOFactory.getFactory().getUsuarioDAO();
 
-		Telefono tlf = null;//t.buscarTelefonoNumCorreo(numero, usuDao.getCedula(correo)); <-------------------
+		Telefono tlf = t.findByNumberAndID(numero, usuDao.getID(correo));
+
 		if(tlf != null) {
 			objs[0] = true;
 		}else {
@@ -90,8 +90,8 @@ public class ServletCabecera extends HttpServlet {
 		}
 		if(object != null){
 			String correo = String.valueOf(request.getSession(false).getAttribute("usuario"));
-			TelefonoDAO telefonoDAO = DAOFactory.getFactory().getTelefonoDAO();
-			List<Telefono> lstTelefonos = null; //new ArrayList<>(telefonoDAO.listarTelefonosCorreo(correo)); <------------
+			TelefonoDAO telefonoDAO = JPADAOFactory.getFactory().getTelefonoDAO();
+			List<Telefono> lstTelefonos = new ArrayList<>(telefonoDAO.findByID(JPADAOFactory.getFactory().getUsuarioDAO().getID(correo)));
 			objs[1] = lstTelefonos;
 
 			if(lstTelefonos.size() == 0) {

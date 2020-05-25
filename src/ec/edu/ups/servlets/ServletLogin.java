@@ -2,6 +2,7 @@ package ec.edu.ups.servlets;
 
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.UsuarioDAO;
+import ec.edu.ups.jpa.JPADAOFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,16 +57,13 @@ public class ServletLogin extends HttpServlet {
 		Object[] objs = new Object[2];
 		String usuario = request.getParameter("usuario");
 		String password = request.getParameter("password");
-		UsuarioDAO usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
-
+		UsuarioDAO usuarioDAO = JPADAOFactory.getFactory().getUsuarioDAO();
 
 		if(usuarioDAO.verifyUser(usuario, password)) {
 			objs[0] = true;
 			objs[1] = usuario;
-			return objs;
-		}else {
-			return objs;
 		}
+		return objs;
 
 	}
 	

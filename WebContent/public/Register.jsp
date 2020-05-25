@@ -8,8 +8,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Registrate</title>
-	<link rel="stylesheet" href="/AgendaTelefonica_Web_exploded/public/CSS/style.css">
-	<link rel="stylesheet" href="/AgendaTelefonica_Web_exploded/public/CSS/Index.css">
+	<link rel="stylesheet" href="/public/CSS/style.css">
+	<link rel="stylesheet" href="/public/CSS/Index.css">
 
 </head>
 <body style="display: flex; align-items: center; justify-content: center;" onmousemove="quitarErrores()">
@@ -47,7 +47,7 @@
 			<div class="signup-content">
 				<div class="signup-form">
 					<h2 class="form-title">Registrate</h2>
-					<form method="POST" class="register-form" id="register-form" action="/AgendaTelefonica_Web_exploded/ServletRegister">
+					<form method="POST" class="register-form" id="register-form" action="/ServletRegister">
 						<div class="form-group">
 							<label for="cedula"><i class="zmdi zmdi-account material-icons-name"></i></label>
 							<input type="text" name="cedula" id="cedula" placeholder="Cedula"/>
@@ -74,8 +74,8 @@
 					</form>
 				</div>
 				<div class="signup-image">
-					<figure><img src="/AgendaTelefonica_Web_exploded/public/Images/register.jpg" alt="sing up image"/></figure>
-					<a href="/AgendaTelefonica_Web_exploded/public/Index.html" class="signup-image-link">Ya tienes cuenta? Inicia Sesion</a>
+					<figure><img src="/public/Images/register.jpg" alt="sing up image"/></figure>
+					<a href="/public/Index.html" class="signup-image-link">Ya tienes cuenta? Inicia Sesion</a>
 				</div>
 			</div>
 		</div>
