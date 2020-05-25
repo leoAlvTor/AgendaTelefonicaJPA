@@ -8,6 +8,7 @@ import ec.edu.ups.dao.TelefonoDAO;
 import ec.edu.ups.modelo.Telefono;
 import ec.edu.ups.modelo.Usuario;
 
+import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -31,12 +32,16 @@ public class JPATelefonoDAO extends JPAGenericDAO<Telefono, Integer> implements 
 		predicateList.add(criteriaBuilder.equal(telefonoRoot.get("usuario"), usuario));
 
 		criteriaQuery.select(telefonoRoot).where(predicateList.toArray(new Predicate[]{}));
-
-		return entityManager.createQuery(criteriaQuery).getSingleResult();
+		try {
+			return entityManager.createQuery(criteriaQuery).getSingleResult();
+		}catch (NoResultException noResultException){
+			return new Telefono();
+		}
 	}
 
 	@Override
 	public List<Telefono> findByID(String ID) {
+		List<Telefono> telefonoList = new ArrayList<>();
 		Usuario usuario = JPADAOFactory.getFactory().getUsuarioDAO().read(ID);
 
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -46,8 +51,11 @@ public class JPATelefonoDAO extends JPAGenericDAO<Telefono, Integer> implements 
 		Predicate predicate = criteriaBuilder.equal(telefonoRoot.get("usuario"), usuario);
 
 		criteriaQuery.select(telefonoRoot).where(predicate);
-
-		return entityManager.createQuery(criteriaQuery).getResultList();
+		try {
+			return entityManager.createQuery(criteriaQuery).getResultList();
+		}catch (NoResultException noResultException){
+			return telefonoList;
+		}
 	}
 
 	
